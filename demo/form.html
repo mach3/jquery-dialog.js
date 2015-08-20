@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo: jquery-dialog.js (form)</title>
+	<style>
+
+	[aria-hidden=true] {
+		display: none;
+	}
+
+	body {
+		background-color: #eee;
+		margin: 0;
+	}
+
+	article {
+		width: 640px;
+		margin: 0 auto;
+		padding: 1em;
+		background-color: #fff;
+	}
+
+	ul.plain {
+		list-style-type: none;
+		padding: 0;
+	}
+
+	li {
+		margin: .5em 0;
+	}
+
+	input[type=text], input[type=email] {
+		font-size: 1em;
+		padding: .5em;
+		border: 1px solid #ccc;
+		border-radius: .3em;
+	}
+
+	input[type=submit], button {
+		border: none;
+		background-color: #369;
+		color: #fff;
+		font-size: 1em;
+		padding: .5em 1em;
+		border-radius: .3em;
+	}
+
+	.dialog {
+		background-color: #fff;
+		padding: 2em;
+		border-radius: 1em;
+	}
+
+	.dialog h1 {
+		font-size: 1.3em;
+		margin-top: 0;
+	}
+
+	</style>
+</head>
+<body>
+
+	<article>
+		<h1>Demo: jquery-dialog.js (form)</h1>
+		<ul aria-hidden="true" id="logged-in">
+			<li><strong>Your Name:</strong> <span id="value-name"></span></li>
+			<li><strong>Your Email:</strong> <span id="value-email"></span></li>
+		</ul>
+		<p>
+			<button data-dialog="#dialog-login" data-dialog-width="320">Login</button>
+		</p>
+	</article>
+
+	<div aria-hidden="true">
+		<div id="dialog-login">
+			<h1>Login</h1>
+			<form action="">
+				<ul class="plain">
+					<li><label>Name: <input type="text" name="name"></label></li>
+					<li><label>Email: <input type="email" name="email"></label></li>
+				</ul>
+				<input type="submit" value="LOGIN" data-dialog-close>
+			</form>
+		</div>
+	</div>
+
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../src/jquery-dialog.js"></script>
+	<script>
+
+	$(document).on("submit", "#dialog-login form", function(e){
+		e.preventDefault();
+
+		$("#value-name").text($("input[name=name]").val());
+		$("#value-email").text($("input[name=email]").val());
+		$("#logged-in").attr("aria-hidden", "false");
+	});
+
+	</script>
+
+</body>
+</html>

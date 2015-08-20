@@ -1,0 +1,20 @@
+{
+  "name": "jquery-dialog.js",
+  "version": "0.1.0",
+  "authors": [
+    "mach3 <http://github.com/mach3>"
+  ],
+  "description": "Tiny modal window library for jQuery",
+  "main": "dist/jquery-dialog.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1"
+  }
+}
