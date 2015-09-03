@@ -3,7 +3,7 @@
  * ----------------
  * Tiny modal dialog library
  *
- * @version 0.1.0 (2015-0810-2104)
+ * @version 0.1.1 (2015-0903-1916)
  * @author mach3 <http://github.com/mach3>
  * @license MIT
  * @url https://github.com/mach3/jquery-dialog.js
@@ -42,14 +42,15 @@
 
 	$.extend(Dialog.prototype, {
 
-		EVENT_CLOSE: "close",
-		EVENT_OPEN: "open",
+		EVENT_CLOSE: "dialogclose",
+		EVENT_OPEN: "dialogopen",
 
 		emitter: null,
 		legacy: null,
 		container: null,
 		current: null,
 		items: null,
+		dialog: null,
 
 		options: {
 			zIndex: 99,
@@ -182,6 +183,7 @@
 
 			this.container.append(dialog).fadeIn(o.duration);
 			this.current = item.name;
+			this.dialog = dialog;
 			this.trigger(this.EVENT_OPEN);
 		},
 
@@ -199,8 +201,9 @@
 				}
 				my.container.children().remove();
 			});
-			this.current = null;
 			this.trigger(this.EVENT_CLOSE);
+			this.dialog = null;
+			this.current = null;
 		}
 
 	});

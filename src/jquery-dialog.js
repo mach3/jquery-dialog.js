@@ -32,14 +32,15 @@
 
 	$.extend(Dialog.prototype, {
 
-		EVENT_CLOSE: "close",
-		EVENT_OPEN: "open",
+		EVENT_CLOSE: "dialogclose",
+		EVENT_OPEN: "dialogopen",
 
 		emitter: null,
 		legacy: null,
 		container: null,
 		current: null,
 		items: null,
+		dialog: null,
 
 		options: {
 			zIndex: 99,
@@ -172,6 +173,7 @@
 
 			this.container.append(dialog).fadeIn(o.duration);
 			this.current = item.name;
+			this.dialog = dialog;
 			this.trigger(this.EVENT_OPEN);
 		},
 
@@ -189,8 +191,9 @@
 				}
 				my.container.children().remove();
 			});
-			this.current = null;
 			this.trigger(this.EVENT_CLOSE);
+			this.dialog = null;
+			this.current = null;
 		}
 
 	});

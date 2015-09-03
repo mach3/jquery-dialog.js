@@ -84,13 +84,13 @@ $.dialog.config({
 `$.dialog` fires some events.
 
 ```javascript
-$.dialog.on("close", function(){
+$.dialog.on("dialogclose", function(){
     console.log("dialog closed");
 });
 ```
 
-- **close** ... Dialog is closed
-- **open** ... Dialog is opened
+- **dialogclose** ... Dialog is closed
+- **dialogopen** ... Dialog is opened
 
 
 ## Transparent background for legacy (MSIE8 or less)
